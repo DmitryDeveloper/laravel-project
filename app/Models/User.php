@@ -29,7 +29,6 @@ class User extends Model
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -38,6 +37,8 @@ class User extends Model
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'created_at' => 'date',
+        'updated_at' => 'date',
+        'deleted_at' => 'date',
     ];
 }
