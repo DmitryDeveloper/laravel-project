@@ -17,8 +17,16 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->integer('users_id');
-            $table->integer('categories_id');
+            $table->integer('user_id');
+            $table->integer('category_id');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
