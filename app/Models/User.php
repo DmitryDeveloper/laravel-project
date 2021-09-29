@@ -41,4 +41,15 @@ class User extends Model
         'updated_at' => 'date',
         'deleted_at' => 'date',
     ];
+
+    /**
+     * Set user password.
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setPasswordAttribute(string $value)
+    {
+        $this->attributes['password'] = password_hash($value, PASSWORD_DEFAULT);
+    }
 }
