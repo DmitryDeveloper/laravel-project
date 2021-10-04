@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,12 +15,34 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'first_name' => 'Andrey',
-            'last_name' => 'Kozirev',
-            'role' => 'administrator',
-            'email' => 'kozirev@gmail.com',
-            'password' => '1234567890',
-        ]);
+//        User::create([
+//            'first_name' => 'Admin',
+//            'last_name' => 'Admin',
+//            'role' => 'administrator',
+//            'email' => 'config(users.admin_email)',
+//            'password' => 'config(users.admin_password)',
+//        ]);
+
+        $users = [
+            ['first_name' => 'Admin',
+                'last_name' => 'Admin',
+                'role' => 'administrator',
+                'email' => 'config(users.admin_email)',
+                'password' => 'config(users.admin_password)'],
+            ['first_name' => 'moderator',
+                'last_name' => 'moderator',
+                'role' => 'moderator',
+                'email' => 'config(users.admin_email)',
+                'password' => 'config(users.admin_password)'],
+            ['first_name' => 'moderator2',
+                'last_name' => 'moderator2',
+                'role' => 'moderator',
+                'email' => 'config(users.admin_email)',
+                'password' => 'config(users.admin_password)']
+        ];
+
+        foreach ($users as $value) {
+            User::create($value);
+        }
     }
 }

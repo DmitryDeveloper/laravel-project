@@ -15,8 +15,14 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'name' => 'Products',
-        ]);
+        $categories = [
+            ['name' => 'TV'],
+            ['name' => 'Food'],
+            ['name' => 'auto']
+        ];
+
+        foreach ($categories as $value) {
+            Category::create($value);
+        }
     }
 }
