@@ -15,30 +15,28 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-//        User::create([
-//            'first_name' => 'Admin',
-//            'last_name' => 'Admin',
-//            'role' => 'administrator',
-//            'email' => 'config(users.admin_email)',
-//            'password' => 'config(users.admin_password)',
-//        ]);
-
         $users = [
-            ['first_name' => 'Admin',
+            [
+                'first_name' => 'Admin',
                 'last_name' => 'Admin',
-                'role' => 'administrator',
+                'role' => 'User::ROLE_ADMIN',
                 'email' => 'config(users.admin_email)',
-                'password' => 'config(users.admin_password)'],
-            ['first_name' => 'moderator',
+                'password' => 'config(users.admin_password)'
+            ],
+            [
+                'first_name' => 'moderator',
                 'last_name' => 'moderator',
-                'role' => 'moderator',
+                'role' => 'User::ROLE_MODERATOR',
                 'email' => 'config(users.admin_email)',
-                'password' => 'config(users.admin_password)'],
-            ['first_name' => 'moderator2',
+                'password' => 'config(users.admin_password)'
+            ],
+            [
+                'first_name' => 'moderator2',
                 'last_name' => 'moderator2',
-                'role' => 'moderator',
+                'role' => 'User::ROLE_MODERATOR',
                 'email' => 'config(users.admin_email)',
-                'password' => 'config(users.admin_password)']
+                'password' => 'config(users.admin_password)'
+            ]
         ];
 
         foreach ($users as $value) {
