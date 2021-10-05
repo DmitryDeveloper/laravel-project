@@ -9,6 +9,10 @@ class User extends Model
 {
     use HasFactory;
 
+    public const ROLE_ADMIN = "admin";
+    public const ROLE_MODERATOR = "moderator";
+    public const ROLE_CUSTOMER = "customer";
+
     /**
      * The attributes that are mass assignable.
      *
