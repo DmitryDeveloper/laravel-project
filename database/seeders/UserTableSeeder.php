@@ -24,18 +24,18 @@ class UserTableSeeder extends Seeder
                 'password' => 'config(users.admin_password)'
             ],
             [
-                'first_name' => 'moderator',
-                'last_name' => 'moderator',
+                'first_name' => 'Andrei',
+                'last_name' => 'Kozladornia',
                 'role' => 'User::ROLE_MODERATOR',
-                'email' => 'config(users.admin_email)',
-                'password' => 'config(users.admin_password)'
+                'email' => 'andry@mail.com',
+                'password' => '111111111'
             ],
             [
-                'first_name' => 'moderator2',
-                'last_name' => 'moderator2',
+                'first_name' => 'Maks',
+                'last_name' => 'Pokidzko',
                 'role' => 'User::ROLE_MODERATOR',
-                'email' => 'config(users.admin_email)',
-                'password' => 'config(users.admin_password)'
+                'email' => 'maks@mail.com',
+                'password' => '222222222'
             ]
         ];
 
