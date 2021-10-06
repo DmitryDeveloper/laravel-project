@@ -12,14 +12,13 @@ class UserController extends Controller
         response()->json(User::all());
     }
 
-    public function show($id)
+    public function show(int $id)
     {
-        response()->json(User::find($id));
+        response()->json(User::findOrFail($id));
     }
 
     public function store(Request $request)
     {
-        $user = new User();
         $user = $user::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
@@ -31,15 +30,13 @@ class UserController extends Controller
         response()->json($user);
     }
 
-    public function delete($id)
+    public function delete(int $id)
     {
-        User::find($id)->delete();
+        User::destroy($id);
     }
 
-    public function update($id, Request $request)
+    public function update(int $id, Request $request)
     {
-        $user = new User();
-
         $user = $user->update([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
