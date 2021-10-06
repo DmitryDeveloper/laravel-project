@@ -30,3 +30,9 @@ Route::get('/category/{id}', [UserController::class, 'show'])->name('category.sh
 Route::post('/category', [UserController::class, 'store'])->name('category.store');
 Route::delete('/category/{id}', [UserController::class, 'delete'])->name('category.delete');
 Route::put('/category/{id}', [UserController::class, 'update'])->name('category.update');
+
+Route::get('/product', [UserController::class, 'index'])->name('products');
+Route::get('/product/{id}', [UserController::class, 'show'])->name('product.show');
+Route::post('/product', [UserController::class, 'store'])->name('product.store');
+Route::delete('/product/{id}', [UserController::class, 'delete'])->name('product.delete');
+Route::put('/product/{id}', [UserController::class, 'update'])->name('product.update');
