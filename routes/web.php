@@ -19,7 +19,3 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/users/all', [UserController::class, 'index'])->name('all-users');
-Route::get('/users/all/{id}', [UserController::class, 'show'])->name('id-users');
-Route::post('/users/store', [UserController::class, 'store'])->name('store-users');
-Route::delete('/users/all/{id}/delete', [UserController::class, 'delete'])->name('delete-users');
