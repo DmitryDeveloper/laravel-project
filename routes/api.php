@@ -24,3 +24,9 @@ Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
 Route::delete('/users/{id}', [UserController::class, 'delete'])->name('user.delete');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
+
+Route::get('/category', [UserController::class, 'index'])->name('categories');
+Route::get('/category/{id}', [UserController::class, 'show'])->name('category.show');
+Route::post('/category', [UserController::class, 'store'])->name('category.store');
+Route::delete('/category/{id}', [UserController::class, 'delete'])->name('category.delete');
+Route::put('/category/{id}', [UserController::class, 'update'])->name('category.update');
