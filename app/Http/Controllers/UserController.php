@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $user = $user::create([
+        $user = User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'role' => $request->input('role'),
@@ -37,7 +37,7 @@ class UserController extends Controller
 
     public function update(int $id, Request $request)
     {
-        $user = $user->update([
+        $user = User::update([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'role' => $request->input('role'),
