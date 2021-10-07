@@ -9,21 +9,21 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        response()->json(Category::all());
+       return response()->json(Category::all());
     }
 
     public function show(int $id)
     {
-        response()->json(Category::findOrFail($id));
+       return response()->json(Category::findOrFail($id));
     }
 
     public function store(Request $request)
     {
-        $user = Category::create([
+        $category = Category::create([
             'name' => $request->input('name'),
         ]);
 
-        response()->json($user);
+       return response()->json($category);
     }
 
     public function delete(int $id)
@@ -33,10 +33,10 @@ class CategoryController extends Controller
 
     public function update(int $id, Request $request)
     {
-        $user = Category::update([
+        $category = Category::update([
             'name' => $request->input('name'),
         ]);
 
-        response()->json($user);
+       return response()->json($category);
     }
 }

@@ -9,12 +9,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        response()->json(User::all());
+        return response()->json(User::all());
     }
 
     public function show(int $id)
     {
-        response()->json(User::findOrFail($id));
+        return response()->json(User::findOrFail($id));
     }
 
     public function store(Request $request)
@@ -27,12 +27,12 @@ class UserController extends Controller
             'password' => $request->input('password'),
         ]);
 
-        response()->json($user);
+        return response()->json($user);
     }
 
     public function delete(int $id)
     {
-        User::destroy($id);
+       User::destroy($id);
     }
 
     public function update(int $id, Request $request)
@@ -45,6 +45,6 @@ class UserController extends Controller
             'password' => $request->input('password'),
         ]);
 
-        response()->json($user);
+       return response()->json($user);
     }
 }
