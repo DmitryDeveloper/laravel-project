@@ -21,6 +21,7 @@ class Product extends Model
         'category_id',
     ];
 
+
     /**
      * Get the category a product belongs to.
      */
@@ -28,6 +29,4 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-    public $timestamps = false;
 }
