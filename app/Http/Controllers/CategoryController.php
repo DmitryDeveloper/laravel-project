@@ -28,7 +28,8 @@ class CategoryController extends Controller
 
     public function delete(int $id)
     {
-        Category::destroy($id);
+        $result = Category::destroy($id);
+        return response()->json($result);
     }
 
     public function update(int $id, Request $request)

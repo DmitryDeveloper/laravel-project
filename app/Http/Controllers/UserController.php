@@ -32,7 +32,8 @@ class UserController extends Controller
 
     public function delete(int $id)
     {
-       User::destroy($id);
+        $result = User::destroy($id);
+        return response()->json($result);
     }
 
     public function update(int $id, Request $request)
@@ -45,6 +46,6 @@ class UserController extends Controller
             'password' => $request->input('password'),
         ]);
 
-       return response()->json($user);
+        return response()->json($user);
     }
 }
