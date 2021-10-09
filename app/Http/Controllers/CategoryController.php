@@ -9,12 +9,12 @@ class CategoryController extends Controller
 {
     public function index()
     {
-       return response()->json(Category::all());
+        return response()->json(Category::all());
     }
 
     public function show(int $id)
     {
-       return response()->json(Category::findOrFail($id));
+        return response()->json(Category::findOrFail($id));
     }
 
     public function store(Request $request)
@@ -23,7 +23,7 @@ class CategoryController extends Controller
             'name' => $request->input('name'),
         ]);
 
-       return response()->json($category);
+        return response()->json($category);
     }
 
     public function delete(int $id)
@@ -34,10 +34,10 @@ class CategoryController extends Controller
 
     public function update(int $id, Request $request)
     {
-        $category = Category::update([
+        $category = Category::where('id', $id)->update($request->all([
             'name' => $request->input('name'),
-        ]);
+        ]));
 
-       return response()->json($category);
+        return response()->json($category);
     }
 }

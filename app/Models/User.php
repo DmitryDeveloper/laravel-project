@@ -54,6 +54,7 @@ class User extends Model
      */
     public function setPasswordAttribute(string $value)
     {
-       $this->attributes['password'] = password_hash($value, PASSWORD_DEFAULT);
+        $this->attributes['password'] = password_hash($value, PASSWORD_DEFAULT);
+
     }
 }
