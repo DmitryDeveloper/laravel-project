@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryController extends Controller
 {
@@ -31,13 +32,11 @@ class CategoryController extends Controller
         $result = Category::destroy($id);
         return response()->json($result);
     }
-
-    public function update(int $id, Request $request)
+  
+    public function update($id, Request $request)
     {
-        $category = Category::where('id', $id)->update($request->all([
-            'name' => $request->input('name'),
-        ]));
-
+        $category = Category::where('id', $id)
+            ->update(['name' => $request->input('name')]);
         return response()->json($category);
     }
 }
