@@ -32,12 +32,10 @@ class CategoryController extends Controller
         return response()->json($result);
     }
 
-    public function update(int $id, Request $request)
+    public function update($id, Request $request)
     {
-        $category = Category::where('id', $id)->update($request->all([
-            'name' => $request->input('name'),
-        ]));
-
+        $category = Category::where('id', $id)
+            ->update(['name' => $request->input('name')]);
         return response()->json($category);
     }
 }

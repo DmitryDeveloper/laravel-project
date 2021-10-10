@@ -35,15 +35,15 @@ class ProductController extends Controller
         return response()->json($result);
     }
 
-    public function update(int $id, Request $request)
+    public function update($id, Request $request)
     {
-        $product = Product::where('id', $id)->update($request->all([
+        $product = Product::where('id', $id)->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'user_id' => $request->input('user_id'),
             'category_id' => $request->input('category_id'),
-        ]));
+        ]);
 
-        return response()->json($product);
+       return response()->json($product);
     }
 }
