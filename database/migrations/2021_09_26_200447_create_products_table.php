@@ -17,13 +17,6 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-//            $table->unsignedBigInteger('user_id');
-//            $table->unsignedBigInteger('category_id');
-
-//            $table->foreignId('forign_id')
-//                ->nullable()
-//                ->constrained('categories')->nullOnDelete();
-
 
             $table->foreignId('user_id')
                 ->nullable()
@@ -32,7 +25,6 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained('categories')->nullOnDelete();
-
 
             $table->timestamps();
         });
