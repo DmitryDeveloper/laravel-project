@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->integer('user_id');
-            $table->integer('category_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
 
             $table->foreign('user_id')
                 ->references('id')
@@ -27,6 +27,8 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')
                 ->references('id')
                 ->on('users');
+
+            $table->timestamps();
         });
     }
 

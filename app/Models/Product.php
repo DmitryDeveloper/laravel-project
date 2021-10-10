@@ -21,6 +21,7 @@ class Product extends Model
         'category_id',
     ];
 
+
     /**
      * Get the category a product belongs to.
      */

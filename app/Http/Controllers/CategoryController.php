@@ -4,39 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        response()->json(Category::all());
+        return response()->json(Category::all());
     }
 
     public function show(int $id)
     {
-        response()->json(Category::findOrFail($id));
+        return response()->json(Category::findOrFail($id));
     }
 
     public function store(Request $request)
     {
-        $user = Category::create([
+        $category = Category::create([
             'name' => $request->input('name'),
         ]);
 
-        response()->json($user);
+        return response()->json($category);
     }
 
     public function delete(int $id)
     {
-        Category::destroy($id);
+        $result = Category::destroy($id);
+        return response()->json($result);
     }
 
-    public function update(int $id, Request $request)
-    {
-        $user = Category::update([
-            'name' => $request->input('name'),
-        ]);
 
-        response()->json($user);
+    public function update($id, Request $request)
+    {
+        $category = Category::where('id', $id)
+            ->update(['name' => $request->input('name')]);
+        return response()->json($category);
     }
 }
