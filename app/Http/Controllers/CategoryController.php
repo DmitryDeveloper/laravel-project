@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryController extends Controller
 {
@@ -32,7 +31,6 @@ class CategoryController extends Controller
         $result = Category::destroy($id);
         return response()->json($result);
     }
-
 
     public function update($id, Request $request)
     {

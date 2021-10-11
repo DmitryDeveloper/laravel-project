@@ -9,12 +9,12 @@ class ProductController extends Controller
 {
     public function index()
     {
-       return response()->json(Product::all());
+        return response()->json(Product::all());
     }
 
     public function show(int $id)
     {
-       return response()->json(Product::findOrFail($id));
+        return response()->json(Product::findOrFail($id));
     }
 
     public function store(Request $request)
@@ -26,7 +26,7 @@ class ProductController extends Controller
             'category_id' => $request->input('category_id'),
         ]);
 
-       return response()->json($product);
+        return response()->json($product);
     }
 
     public function delete(int $id)
@@ -43,6 +43,7 @@ class ProductController extends Controller
             'user_id' => $request->input('user_id'),
             'category_id' => $request->input('category_id'),
         ]);
+
        return response()->json($product);
     }
 }

@@ -45,6 +45,7 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ]);
+
         return response()->json($user);
     }
 }
