@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Categories\CategoryStoreRequest;
+use App\Http\Requests\Categories\CategoryUpdateRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -17,7 +18,7 @@ class CategoryController extends Controller
         return response()->json(Category::findOrFail($id));
     }
 
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
         $category = Category::create([
             'name' => $request->input('name'),
@@ -32,7 +33,7 @@ class CategoryController extends Controller
         return response()->json($result);
     }
 
-    public function update($id, Request $request)
+    public function update($id, CategoryUpdateRequest $request)
     {
         $category = Category::where('id', $id)
             ->update(['name' => $request->input('name')]);
