@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Products\ProductStoreRequest;
 use App\Http\Requests\Products\ProductUpdateRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -40,6 +41,16 @@ class ProductController extends Controller
     {
         $product = Product::where('id', $id)->update($request->all());
 
-       return response()->json($product);
+        return response()->json($product);
+    }
+
+    public function search($name)
+    {
+        $result = Product::where('name', 'LIKE', '%' . $name . '%')->get();
+        if (count($result)) {
+            return Response()->json($result);
+        } else {
+            return response()->json(['Result' => 'No Data not found'], 404);
+        }
     }
 }
