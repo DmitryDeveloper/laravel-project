@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Products\ProductStoreRequest;
 use App\Http\Requests\Products\ProductUpdateRequest;
 use App\Models\Product;
+use App\Http\Requests\Products\ProductSearchRequest;
 
 class ProductController extends Controller
 {
@@ -40,6 +41,14 @@ class ProductController extends Controller
     {
         $product = Product::where('id', $id)->update($request->all());
 
-       return response()->json($product);
+        return response()->json($product);
+    }
+
+    public function search(ProductSearchRequest $request)
+    {
+        $name = $request->input("keyword");
+        $result = Product::where('name', 'LIKE', "$name%")->get();
+
+        return Response()->json($result);
     }
 }
