@@ -39,4 +39,4 @@ Route::post('/product', [ProductController::class, 'store'])->name('product.stor
 Route::delete('/product/{id}', [ProductController::class, 'delete'])->name('product.delete');
 Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
 
-Route::get('/product/search/{name}', [ProductController::class, 'search'])->name('product.search');
+Route::get('/products/search', [ProductController::class, 'search'])->name('product.search');

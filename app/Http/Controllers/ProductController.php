@@ -44,13 +44,11 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-    public function search($name)
+    public function search(Request $request)
     {
-        $result = Product::where('name', 'LIKE', '%' . $name . '%')->get();
-        if (count($result)) {
-            return Response()->json($result);
-        } else {
-            return response()->json(['Result' => 'No Data not found'], 404);
-        }
+        $name = $request->input("keyword");
+        $result = Product::where('name', 'LIKE', "$name%")->get();
+
+        return Response()->json($result);
     }
 }
