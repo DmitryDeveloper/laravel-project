@@ -44,10 +44,10 @@ class CategoryController extends Controller
 
     public function productsCount()
     {
-        $category = Category::all();
+        $categories = Category::all();
         $result = [];
-        foreach ($category as $key[$value -> name] => $value) {
-            $result[$value -> name] = Product::where('category_id', $value->id)->count();
+        foreach ($categories as $category) {
+            $result[$category->name] = Product::where('category_id', $category->id)->count();
         }
         return response()->json($result);
     }
