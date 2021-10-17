@@ -40,3 +40,4 @@ Route::delete('/product/{id}', [ProductController::class, 'delete'])->name('prod
 Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
 
 Route::get('/products/search', [ProductController::class, 'search'])->name('product.search');
+Route::get('/categories/products-count', [CategoryController::class, 'productsCount'])->name('category.products-count');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Categories\CategoryStoreRequest;
 use App\Http\Requests\Categories\CategoryUpdateRequest;
 use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Client\Request;
 
 class CategoryController extends Controller
 {
@@ -38,5 +40,15 @@ class CategoryController extends Controller
         $category = Category::where('id', $id)
             ->update(['name' => $request->input('name')]);
         return response()->json($category);
+    }
+
+    public function productsCount()
+    {
+        $categories = Category::all();
+        $result = [];
+        foreach ($categories as $category) {
+            $result[$category->name] = Product::where('category_id', $category->id)->count();
+        }
+        return response()->json($result);
     }
 }
