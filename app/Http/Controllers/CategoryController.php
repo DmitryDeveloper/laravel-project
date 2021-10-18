@@ -52,11 +52,11 @@ class CategoryController extends Controller
         return response()->json($result);
     }
 
-    public function products($id)
+    public function getProductsByCategoryId($id)
     {
-        $categories = Category::findOrFail($id);
+        $category = Category::findOrFail($id);
         $result = [];
-        $result[$categories->name] = Product::where('category_id', $categories->id)->pluck('name');
+        $result[$category->name] = Product::where('category_id', $category->id)->pluck('name');
 
         return response()->json($result);
     }
