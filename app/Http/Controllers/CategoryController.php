@@ -51,4 +51,13 @@ class CategoryController extends Controller
         }
         return response()->json($result);
     }
+
+    public function getProductsByCategoryId($id)
+    {
+        $category = Category::findOrFail($id);
+        $result = [];
+        $result[$category->name] = Product::where('category_id', $category->id)->pluck('name');
+
+        return response()->json($result);
+    }
 }

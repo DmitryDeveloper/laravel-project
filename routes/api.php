@@ -41,3 +41,4 @@ Route::put('/product/{id}', [ProductController::class, 'update'])->name('product
 
 Route::get('/products/search', [ProductController::class, 'search'])->name('product.search');
 Route::get('/categories/products-count', [CategoryController::class, 'productsCount'])->name('category.products-count');
+Route::get('/categories/{categoryId}/products', [CategoryController::class, 'getProductsByCategoryId'])->name('category.products');
