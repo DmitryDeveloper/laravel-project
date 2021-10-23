@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Aut\AutRegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -9,22 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function register(AutRegisterRequest $request)
     {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:6',
-        ]);
-
         $user = User::create([
-            'first_name' => $validatedData['first_name'],
-            'last_name' => $validatedData['last_name'],
-            'role' => $validatedData['role'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'role' => $request->input('role'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -38,8 +31,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-
-        if (Auth::attempt ($request->only('email', 'password'))) {
+        if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
                 'message' => 'Invalid login details'
             ], 401);
