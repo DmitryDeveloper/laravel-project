@@ -32,9 +32,9 @@ class Product extends Model
     /**
      * Get products of the desired category.
      */
-    public function busket()
+    public function basket()
     {
-        return $this->hasMany(Busket::class);
+        return $this->hasMany(Basket::class);
     }
     public $timestamps = false;
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBusketTable extends Migration
+class CreateBasketTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBusketTable extends Migration
      */
     public function up()
     {
-        Schema::create('busket', function (Blueprint $table) {
+        Schema::create('basket', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')
@@ -35,6 +35,6 @@ class CreateBusketTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('busket');
+        Schema::dropIfExists('basket');
     }
 }

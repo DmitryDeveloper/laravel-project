@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Busket extends Model
+class Basket extends Model
 {
     use HasFactory;
 
-    protected $table="busket";
+    protected $table="basket";
 
     /**
      * The attributes that are mass assignable.
@@ -21,12 +21,9 @@ class Busket extends Model
         'product_id',
     ];
 
-    /**
-     * Get the category a product belongs to.
-     */
     public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
     public $timestamps = true;
 }
