@@ -15,15 +15,12 @@ class CreateBasketTable extends Migration
     {
         Schema::create('basket', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users')->nullOnDelete();
-
             $table->foreignId('product_id')
                 ->nullable()
                 ->constrained('products')->nullOnDelete();
-
             $table->timestamps();
         });
     }

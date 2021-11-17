@@ -28,13 +28,4 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-    /**
-     * Get products of the desired category.
-     */
-    public function basket()
-    {
-        return $this->hasMany(Basket::class);
-    }
-    public $timestamps = false;
 }

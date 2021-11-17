@@ -24,14 +24,7 @@ class BasketController extends Controller
     public function index()
     {
         $currentUserId = Auth::id();
-        $basket = new Basket();
-        $basket->user_id = $currentUserId;
-        $basketProducts = Basket::where('user_id', $currentUserId)->get();
-        $basketProductIds = $basketProducts->map(function ($basketProduct) {
-            return collect($basketProduct->toArray())
-                ->only(['product_id'])
-                ->all();
-        });
+        $basketProductIds = Basket::where('user_id', $currentUserId)->get(['product_id']);
         $products = Product::whereIn('id', $basketProductIds)->get();
 
         return response()->json($products);
@@ -40,18 +33,15 @@ class BasketController extends Controller
     public function remove(int $productId)
     {
         $currentUserId = Auth::id();
-        $removeProductId= Basket::where('product_id', $productId)->where('user_id',$currentUserId);
-        $removeProductId->delete();
+        Basket::where('product_id', $productId)->where('user_id',$currentUserId)->delete();
 
-        return response()->json($removeProductId);
+        return response()->noContent();
     }
 
     public function clean()
     {
-        $currentUserId = Auth::id();
-        $cleanProductId= Basket::where('user_id',$currentUserId);
-        $cleanProductId->delete();
+        Basket::where('user_id', Auth::id())->delete();
 
-        return response()->json($cleanProductId);
+        return response()->noContent();
     }
 }
