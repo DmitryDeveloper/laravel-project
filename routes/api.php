@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -51,4 +52,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
     Route::delete('/product/{id}', [ProductController::class, 'delete'])->name('product.delete');
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
+
+    Route::post('/basket', [BasketController::class, 'store'])->name('basket.store');
+    Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
+    Route::delete('/basket/{id}', [BasketController::class, 'remove'])->name('basket.remove');
+    Route::delete('/basket', [BasketController::class, 'clean'])->name('basket.clean');
 });
+
+
