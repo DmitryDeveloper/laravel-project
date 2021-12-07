@@ -6,6 +6,7 @@ use App\Http\Requests\Products\ProductStoreRequest;
 use App\Http\Requests\Products\ProductUpdateRequest;
 use App\Models\Product;
 use App\Http\Requests\Products\ProductSearchRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -27,6 +28,10 @@ class ProductController extends Controller
             'user_id' => $request->input('user_id'),
             'category_id' => $request->input('category_id'),
         ]);
+
+        $imgStore = $request->file('image_path')->store('images', 'public');
+        $product->image_path = Storage::disk('public')->url($imgStore);
+        $product->save();
 
         return response()->json($product);
     }

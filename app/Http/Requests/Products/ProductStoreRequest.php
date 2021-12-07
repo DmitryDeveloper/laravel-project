@@ -26,6 +26,7 @@ class ProductStoreRequest extends FormRequest
         return [
             'name' => 'required|min:5|max:10|string',
             'description' => 'required|min:5|max:200|string',
+            'image_path' => 'required',
             'user_id' => 'required',
             'category_id' => 'required'
         ];
